@@ -21,9 +21,13 @@ def submit(request):
 
 
 def plot(others, you, title):
-    hist = plt.hist(others, bins='auto')
-    plt.title(title)
+    try:
+        plt.close()
+    except:
+        pass
 
+    _ = plt.hist(others, bins='auto')
+    plt.title(title)
     plt.annotate("",
             xy=(you, 0), xycoords='data',
             xytext=(you, 5), textcoords='data',
