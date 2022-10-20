@@ -11,6 +11,7 @@ def redirect_about(request):
 
 urlpatterns = [
     path("code-combat-server/", views.submit, name="submit"),
+    path("code-combat-server/i-win", views.winner),
     path("code-combat-server/histogram/time/<int:id>", views.histogram_time, name="histogram_time"),
     path("code-combat-server/histogram/complexity/<int:id>", views.histogram_complexity, name="histogram_complexity"),
 ]

@@ -20,6 +20,14 @@ def submit(request):
     return HttpResponse("hi", content_type="text/plain")
 
 
+@csrf_exempt
+# Create your views here.
+def winner(request):
+    if request.method == "POST":
+        return HttpResponse("You win! You figured it out! Tell your teacher, maybe they'll be impressed!", content_type="text/plain")
+    return HttpResponse("hi", content_type="text/plain")
+
+
 def plot(others, you, title):
     try:
         plt.close()
