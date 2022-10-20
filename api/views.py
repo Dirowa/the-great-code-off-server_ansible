@@ -34,14 +34,20 @@ def winner(request):
         return HttpResponse("You win! You figured it out! Tell your teacher, maybe they'll be impressed!", content_type="text/plain")
     return HttpResponse("hi", content_type="text/plain")
 
+COLOURS = [
+    ('#A05FA0', '#c8a2c8'),
+    ('#A2C8A2', '#E2C8C8'),
+    ('#f19cbb', '#E54881'),
+]
 
-def plot(others, you, title, xlab):
+
+def plot(others, you, title, xlab, color_index):
     try:
         plt.close()
     except:
         pass
 
-    _ = plt.hist(others, bins='auto')
+    _ = plt.hist(others, bins='auto', color=COLOURS[color_index][0], hatch='*', edgecolor=COLOURS[color_index][1])
     with plt.xkcd():
         plt.title(title, fontname='Comic Neue')
         plt.annotate("You\nare\nhere",
@@ -64,7 +70,7 @@ def histogram_time(request, id):
     you = record.time
     others = Entry.objects.filter(name=record.name).values('time')
     others = [x['time'] for x in others]
-    return plot(others, you, f"Histogram of '{record.name}' execution time", "time (ms)")
+    return plot(others, you, f"Histogram of '{record.name}' execution time", "time (ms)", 0)
 
 
 def histogram_complexity(request, id):
@@ -72,7 +78,7 @@ def histogram_complexity(request, id):
     you = record.complexity
     others = Entry.objects.filter(name=record.name).values('complexity')
     others = [x['complexity'] for x in others]
-    return plot(others, you, f"Histogram of '{record.name}' complexity", "complexity")
+    return plot(others, you, f"Histogram of '{record.name}' complexity", "complexity", 1)
 
 
 def histogram_memory(request, id):
@@ -80,4 +86,4 @@ def histogram_memory(request, id):
     you = record.memory
     others = Entry.objects.filter(name=record.name).values('memory')
     others = [x['memory'] for x in others]
-    return plot(others, you, f"Histogram of '{record.name}' memory", "memory (bytes)")
+    return plot(others, you, f"Histogram of '{record.name}' memory", "memory (bytes)", 2)
