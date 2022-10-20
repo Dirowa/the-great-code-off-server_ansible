@@ -17,4 +17,5 @@ class EntryForm(forms.ModelForm):
             "name",
             "time",
             "complexity",
+            "memory",
         )

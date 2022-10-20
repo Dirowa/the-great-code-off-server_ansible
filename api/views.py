@@ -63,3 +63,11 @@ def histogram_complexity(request, id):
     others = Entry.objects.filter(name=record.name).values('complexity')
     others = [x['complexity'] for x in others]
     return plot(others, you, f"Histogram of {record.name} complexity")
+
+
+def histogram_memory(request, id):
+    record = Entry.objects.get(id=id)
+    you = record.memory
+    others = Entry.objects.filter(name=record.name).values('memory')
+    others = [x['memory'] for x in others]
+    return plot(others, you, f"Histogram of {record.name} memory")
