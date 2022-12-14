@@ -1,2 +1,2 @@
 run:
-	gunicorn performance.wsgi {{ tgco_port }}
+	gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
