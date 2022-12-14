@@ -9,6 +9,7 @@ It provides no authentication currently because it is more likely that our stude
 
 ### groupvars
 
+tgco_path: /srv/the-great-code-off
 tgco_port: port number (9091)
 tgco_debug: False
 tgco_hosts_allowed:

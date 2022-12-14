@@ -1,0 +1,13 @@
+[Unit]
+Description=the-great-code-off service
+
+[Service]
+Type=simple
+User=tgco
+WorkingDirectory={{ venv_home }}
+ExecStart={{ venv_home }}/fooservice --serve-in-foreground
+Restart=on-abort
+EnvironmentFile=/etc/sysconfig/fooservice.env
+
+[Install]
+WantedBy=multi-user.target

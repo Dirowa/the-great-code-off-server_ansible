@@ -1,3 +1,10 @@
+###########################
+# Todo
+# Create TGCO user for management
+# Create SystemD
+# test if database generation is required
+#########################
+
 - name: Create The-Great-code-off-directory
   ansible.builtin.file:
     path: {{ tgco_path }}
@@ -24,3 +31,4 @@
       owner: {{ ansible_user }}
       group: {{ ansible_user }}
       mode: '0644'
+  
