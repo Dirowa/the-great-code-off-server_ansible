@@ -1,0 +1,26 @@
+- name: Create The-Great-code-off-directory
+  ansible.builtin.file:
+    path: {{ tgco_path }}
+    state: directory
+    mode: '0755'
+
+- name: stting up files
+  copy:
+    src: files/    # note the '/' <-- !!!
+    dest: {{ tgco_path }}/
+
+- name: Setting up TGCO setings
+  template:
+    src: settings.py.j2
+    dest: {{ tgco_path }}/performance/settings.py
+    owner: {{ ansible_user }}
+    group: {{ ansible_user }}
+    mode: '0644'
+  
+  - name: Setting up TGCO make
+    template:
+      src: Makefile.j2
+      dest: {{ tgco_path }}/Makefile
+      owner: {{ ansible_user }}
+      group: {{ ansible_user }}
+      mode: '0644'
