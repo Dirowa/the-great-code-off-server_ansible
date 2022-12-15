@@ -5,6 +5,15 @@
 # test if database generation is required
 #########################
 
+- name: Create our admin users
+  user:
+    name: "tgco"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    system: True
+    comment: "the great code off user"
+    update_password: on_create
+    password: "{{ tgco_secret_key | password_hash('sha512') }}"
+
 - name: Create The-Great-code-off-directory
   ansible.builtin.file:
     path: {{ tgco_path }}
