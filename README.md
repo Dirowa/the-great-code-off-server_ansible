@@ -13,7 +13,6 @@ tgco_path: /srv/the-great-code-off
 tgco_port: port number (9091)
 tgco_debug: False
 tgco_hosts_allowed:
-    - host: ip4 or DNS
 ### secrets
 
 tgco_secret_key: random generated password (also inclient)

@@ -25,9 +25,7 @@ SECRET_KEY = {{ tgco_secret_key }}
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = {{ tgco_debug }}
 
-ALLOWED_HOSTS = [{% for host in tgco_hosts_allowed %}
-                "{{ host.host }}"
-                {% enfor %}]
+ALLOWED_HOSTS = [{{ tgco_hosts_allowed }}]
 
 
 # Application definition
