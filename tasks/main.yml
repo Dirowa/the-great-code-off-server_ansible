@@ -40,4 +40,10 @@
     owner: {{ ansible_user }}
     group: {{ ansible_user }}
     mode: '0644'
+
+- name: Install requirements
+  pip: 
+    requirements: {{ tgco_path }}/requirements.txt
+    virtualenv: {{ tgco_path }}/.tgco_env
+    virtualenv_python: python3.9
   
