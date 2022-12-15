@@ -44,7 +44,7 @@
 - name: Setting up TGCO service
   template:
     src: tgco.service.js
-    dest: {{ tgco_path }}/Makefile
+    dest: /etc/systemd/system/tgco.service
     owner: root
     group: root
     mode: '0644'
@@ -55,3 +55,7 @@
     virtualenv: {{ tgco_path }}/.tgco_env
     virtualenv_python: python3.9
   
+- name: Make sure a service unit is running
+  ansible.builtin.systemd:
+    state: started
+    name: tgco.service
