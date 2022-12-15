@@ -4,10 +4,10 @@ Description=the-great-code-off service
 [Service]
 Type=simple
 User=tgco
-WorkingDirectory={{ venv_home }}
-ExecStart={{ venv_home }}/fooservice --serve-in-foreground
+WorkingDirectory={{ tgco_path }}
+ExecStartPre= source {{ tgco_path }}/.tgco_env/bin/activate
+ExecStart= make
 Restart=on-abort
-EnvironmentFile=/etc/sysconfig/fooservice.env
 
 [Install]
 WantedBy=multi-user.target
