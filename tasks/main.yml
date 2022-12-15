@@ -41,7 +41,7 @@
     group: {{ ansible_user }}
     mode: '0644'
 
-- name: Install requirements
+- name: Install tgco requirements
   pip: 
     requirements: {{ tgco_path }}/requirements.txt
     virtualenv: {{ tgco_path }}/.tgco_env
