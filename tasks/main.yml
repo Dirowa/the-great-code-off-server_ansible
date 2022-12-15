@@ -29,16 +29,24 @@
   template:
     src: settings.py.j2
     dest: {{ tgco_path }}/performance/settings.py
-    owner: {{ ansible_user }}
-    group: {{ ansible_user }}
+    owner: tgco
+    group: tgco
     mode: '0644'
   
 - name: Setting up TGCO make
   template:
     src: Makefile.j2
     dest: {{ tgco_path }}/Makefile
-    owner: {{ ansible_user }}
-    group: {{ ansible_user }}
+    owner: tgco
+    group: tgco
+    mode: '0644'
+
+- name: Setting up TGCO service
+  template:
+    src: tgco.service.js
+    dest: {{ tgco_path }}/Makefile
+    owner: root
+    group: root
     mode: '0644'
 
 - name: Install tgco requirements
