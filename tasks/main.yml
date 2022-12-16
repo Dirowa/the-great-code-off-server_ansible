@@ -22,7 +22,7 @@
 
 - name: stting up files
   copy:
-    src: files/    # note the '/' <-- !!!
+    src: files/
     dest: "{{ tgco_path }}/"
 
 - name: Setting up TGCO setings
