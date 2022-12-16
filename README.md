@@ -15,7 +15,7 @@ tgco_debug: False
 tgco_hosts_allowed: "server1","server2"
 ### secrets
 
-tgco_secret_key: random generated password (also inclient)
+tgco_secret_key: random generated password 
 
 ## License
 
