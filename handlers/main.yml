@@ -11,3 +11,8 @@
      name: tgco.service
      state: restarted
   listen: "restart the great code off"
+
+- name: systemd daemon reload
+  systemd:
+    daemon_reload: yes
+  
