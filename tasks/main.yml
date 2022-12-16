@@ -60,6 +60,6 @@
     - restart the great code off
 
 - name: Enable tgco unit
-    systemd:
-      name: tgco.service
-      enabled: yes
+  systemd:
+    name: tgco.service
+    enabled: yes
