@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: the-great-code-off-server
-  author: Donny Vrins
-  description: The great code of server side
+  author: Helena Rasche & Donny Vrins
+  description: Installing & Enabeling the GREAT CODE OFF!
 
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -15,9 +15,9 @@ galaxy_info:
   # - GPL-3.0-only
   # - Apache-2.0
   # - CC-BY-4.0
-  license: license (AGPL-3.0)
-
-  min_ansible_version: 2.1
+  license: AGPL-3.0
+  github_branch: main
+  min_ansible_version: 2.10
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
@@ -26,7 +26,7 @@ galaxy_info:
   platforms:
   - name: Ubuntu
      versions:
-      - 20.04
+      - all
 
 
   galaxy_tags: [Cocalc,the-great-code-off,tgc]
@@ -37,6 +37,6 @@ galaxy_info:
     # NOTE: A tag is limited to a single word comprised of alphanumeric characters.
     #       Maximum 20 tags per role.
 
-#dependencies: []
+dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
   # if you add dependencies to this list.
