@@ -8,14 +8,14 @@ It provides no authentication currently because it is more likely that our stude
 ## Settings
 
 ### groupvars
-
-tgco_path: /srv/the-great-code-off
-tgco_port: port number (9091)
-tgco_debug: False
 tgco_hosts_allowed: "server1","server2"
 ### secrets
-
 tgco_secret_key: random generated password 
+
+### defaults
+tgco_path: /srv/the-great-code-off
+tgco_port: 9091
+tgco_debug: False
 
 ## License
 
