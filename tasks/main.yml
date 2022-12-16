@@ -16,7 +16,7 @@
 
 - name: Create The-Great-code-off-directory
   ansible.builtin.file:
-    path: {{ tgco_path }}
+    path: "{{ tgco_path }}"
     state: directory
     mode: '0755'
 
@@ -28,7 +28,7 @@
 - name: Setting up TGCO setings
   template:
     src: settings.py.j2
-    dest: {{ tgco_path }}/performance/settings.py
+    dest: "{{ tgco_path }}/performance/settings.py"
     owner: tgco
     group: tgco
     mode: '0644'
@@ -36,15 +36,15 @@
 - name: Setting up TGCO make
   template:
     src: Makefile.j2
-    dest: {{ tgco_path }}/Makefile
+    dest: "{{ tgco_path }}/Makefile"
     owner: tgco
     group: tgco
     mode: '0644'
 
 - name: Install tgco requirements
   pip: 
-    requirements: {{ tgco_path }}/requirements.txt
-    virtualenv: {{ tgco_path }}/.tgco_env
+    requirements: "{{ tgco_path }}/requirements.txt"
+    virtualenv: "{{ tgco_path }}/.tgco_env"
     virtualenv_python: python3.9
 
 - name: deploy tgco unit
