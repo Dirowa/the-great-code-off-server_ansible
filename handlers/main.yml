@@ -1,2 +1,13 @@
 ---
 # handlers file for the-great-code-off-server
+- name: start_tgco
+  service:
+     name: tgco.service
+     state: started
+  listen: "start the great code off"
+
+- name: restart_tgco
+  service:
+     name: tgco.service
+     state: restarted
+  listen: "restart the great code off"
