@@ -3,17 +3,17 @@ galaxy_info:
   role_name: the-great-code-off-server
   author: Helena Rasche & Donny Vrins
   description: Installing & Enabeling the GREAT CODE OFF!
-  license: AGPL-3.0
-  github_branch: main
-  min_ansible_version: 2.10
+#  license: AGPL-3.0
+#  github_branch: main
+#  min_ansible_version: 2.10
 
-  platforms:
-  - name: Ubuntu
-     versions:
-      - all
+#  platforms:
+#  - name: Ubuntu
+#     versions:
+#      - all
 
-  galaxy_tags:
-   - system
-   - web
+#  galaxy_tags:
+#   - system
+#   - web
 
   dependencies: []
