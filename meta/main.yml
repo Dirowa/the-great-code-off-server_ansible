@@ -13,8 +13,6 @@ galaxy_info:
       - all
 
   galaxy_tags:
-   - cocalc
-   - tgco
    - system
    - web
 
