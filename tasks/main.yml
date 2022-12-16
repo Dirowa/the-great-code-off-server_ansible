@@ -5,7 +5,7 @@
 # test if database generation is required
 #########################
 
-- name: Create our admin users
+- name: generating TGCO User
   user:
     name: "tgco"
     shell: "{{ item.shell | default('/bin/bash') }}"
