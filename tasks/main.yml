@@ -40,13 +40,10 @@
 - name: Install tgco requirements
   pip: 
     requirements: "{{ tgco_path }}/requirements.txt"
-<<<<<<< HEAD
     virtualenv: "{{ tgco_path }}/.tgco_env"
-    owner: tgco
-    group: tgco
-=======
-    virtualenv: "{{ tgco_path }}/.tgco_env"
->>>>>>> 6fdf9b2005a45c7cafab6e527ce94956c6ce0137
+  become: True
+  become_user: tgco
+
     #virtualenv_python: python3.11.0 
 
 - name: deploy tgco unit
