@@ -33,18 +33,10 @@
     group: tgco
     mode: '0644'
   
-- name: Setting up TGCO make
-  template:
-    src: Makefile.j2
-    dest: "{{ tgco_path }}/Makefile"
-    owner: tgco
-    group: tgco
-    mode: '0644'
-
 - name: Install tgco requirements
   pip: 
     requirements: "{{ tgco_path }}/requirements.txt"
-    virtualenv: "{{ tgco_path }}/.tgco_env"
+    virtualenv: "/usr/local/bin.tgco_env"
     #virtualenv_python: python3.11.0 
 
 - name: deploy tgco unit
