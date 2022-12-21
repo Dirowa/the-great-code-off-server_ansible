@@ -1,3 +1,6 @@
+[Install]
+WantedBy=multi-user.target
+
 [Unit]
 Description=the-great-code-off_service
 
@@ -5,8 +8,9 @@ Description=the-great-code-off_service
 Type=simple
 User=tgco
 WorkingDirectory={{ tgco_path }}
-ExecStartPre=source {{ tgco_path }}/.tgco_env/bin/activate
-ExecStart=make
+VIRTUAL_ENV={{ tgco_path }}/.tgco_env
+Environment=PATH=$VIRTUAL_ENV/bin:$PATH
+ExecStart={{ tgco_path }}/.tgco_env/bin/python {{ tgco_path }}/.tgco_env/bin/gunicorn  performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
 Restart=on-abort
 
 [Install]
