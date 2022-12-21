@@ -24,6 +24,8 @@
   copy:
     src: files/
     dest: "{{ tgco_path }}/"
+    owner: tgco
+    group: tgco
 
 - name: Setting up TGCO setings
   template:
