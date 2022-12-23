@@ -22,7 +22,7 @@
     state: directory
     mode: '0755'
 
-- name: stting up files
+- name: setting up files
   copy:
     src: files/
     dest: "{{ tgco_path }}/"
@@ -36,7 +36,15 @@
     owner: tgco
     group: tgco
     mode: '0644'
-  
+
+- name: Setting up TGCO Makefile
+  template:
+    src: Makefile.j2
+    dest: "{{ tgco_path }}/Makefile"
+    owner: tgco
+    group: tgco
+    mode: '0644'
+    
 - name: Install tgco requirements
   pip: 
     requirements: "{{ tgco_path }}/requirements.txt"

@@ -1,0 +1,4 @@
+tgco:
+        python manage.py migrate api
+		gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
+

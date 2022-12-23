@@ -10,7 +10,7 @@ User=tgco
 WorkingDirectory={{ tgco_path }}
 VIRTUAL_ENV={{ tgco_path }}/.tgco_env
 Environment=PATH=$VIRTUAL_ENV/bin:$PATH
-ExecStart={{ tgco_path }}/.tgco_env/bin/python {{ tgco_path }}/.tgco_env/bin/gunicorn  performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
+ExecStart={{ tgco_path }}/.tgco_env/bin/python make
 Restart=on-abort
 
 [Install]
