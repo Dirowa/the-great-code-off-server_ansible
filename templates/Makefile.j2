@@ -1,8 +1,7 @@
 tgco:
-        
-        ifneq ("$(wildcard $({{ tgco_path }}/db.sqlite3))","")
-		    gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
-        else
-            python manage.py migrate api
-		    gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
-        endif
+        if test -f "{{ tgco_path }}/db.sqlite3";then \
+                {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
+        else \
+                {{ tgco_path }}/.tgco_env/bin/python manage.py migrate api; \
+                {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
+        fi
