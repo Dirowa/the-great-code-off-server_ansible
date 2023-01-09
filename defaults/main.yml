@@ -2,5 +2,6 @@
 # defaults file for the-great-code-off-server
 
 tgco_path: /srv/the-great-code-off
+tgco_venv: "{{ tgco_path }}/.tgco_venv"
 tgco_port: 8000
 tgco_debug: False

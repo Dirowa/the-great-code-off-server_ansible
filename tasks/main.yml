@@ -37,31 +37,31 @@
     group: tgco
     mode: '0644'
 
-- name: Generating TGCO Makefile
-  copy:
-    dest: "{{ tgco_path }}/Makefile"
-    force: yes
-    group: tgco
-    owner: tgco
-    mode: '0644'
-    content: |
-      tgco:
-      "{{ if test -f "{{ tgco_path }}/db.sqlite3";then \ | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
-      "{{ {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
-      "{{ else \ | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
-      "{{ {{ tgco_path }}/.tgco_env/bin/python manage.py migrate api; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
-      "{{ {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
-      "{{ fi | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
 
-    
 - name: Install tgco requirements
   pip: 
     requirements: "{{ tgco_path }}/requirements.txt"
-    virtualenv: "{{ tgco_path }}/.tgco_env"
+    virtualenv: "{{ tgco_venv }"
   become: True
   become_user: tgco
 
     #virtualenv_python: python3.11.0 
+
+# Run syncdb on the application
+
+- name: Check if file exists
+  stat:
+    path: "{{ tgco_path }}/db.sqlite3"
+  register: tgco_database
+
+- name: deploy database
+  become: true
+  become_user: "tgco"
+  django_manage:  # noqa no-handler
+    command: "migrate api"
+    virtualenv: "{{ tgco_venv }}"
+  when: not tgco_database.stat.exists
+    
 
 - name: deploy tgco unit
   template:
