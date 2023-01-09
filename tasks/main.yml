@@ -41,7 +41,7 @@
 - name: Install tgco requirements
   pip: 
     requirements: "{{ tgco_path }}/requirements.txt"
-    virtualenv: "{{ tgco_venv }"
+    virtualenv: "{{ tgco_venv }}"
   become: True
   become_user: tgco
 
