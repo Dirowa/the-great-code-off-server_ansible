@@ -57,7 +57,7 @@
 
 # Run syncdb on the application
 
-- name: Check if file exists
+- name: check if database already exists
   stat:
     path: "{{ tgco_path }}/db.sqlite3"
   register: tgco_database
