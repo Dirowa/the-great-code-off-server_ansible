@@ -20,7 +20,7 @@
     group: tgco
     owner: tgco
     state: directory
-    mode: '0755'
+    mode: '0744'
 
 - name: setting up files
   copy:
@@ -35,7 +35,7 @@
     dest: "{{ tgco_path }}/manage.py"
     owner: tgco
     group: tgco
-    mode: '0755'
+    mode: '0744'
 
 - name: Setting up TGCO setings
   template:
@@ -43,7 +43,7 @@
     dest: "{{ tgco_path }}/performance/settings.py"
     owner: tgco
     group: tgco
-    mode: '0755'
+    mode: '0744'
 
 
 - name: Install tgco requirements
