@@ -10,7 +10,7 @@ User=tgco
 WorkingDirectory={{ tgco_path }}
 VIRTUAL_ENV={{ tgco_path }}/.tgco_env
 Environment=PATH=$VIRTUAL_ENV/bin:$PATH
-ExecStart={{ tgco_path }}/.tgco_env/bin/python make
+ExecStart={{ tgco_path }}/.tgco_env/bin/activate make
 Restart=on-abort
 
 [Install]
