@@ -29,6 +29,14 @@
     owner: tgco
     group: tgco
 
+- name: setting up manager
+  copy:
+    src: files/manage.py
+    dest: "{{ tgco_path }}/manage.py"
+    owner: tgco
+    group: tgco
+    mode: '0755'
+
 - name: Setting up TGCO setings
   template:
     src: settings.py.j2
