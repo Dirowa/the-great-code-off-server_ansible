@@ -35,7 +35,7 @@
     dest: "{{ tgco_path }}/performance/settings.py"
     owner: tgco
     group: tgco
-    mode: '0644'
+    mode: '0744'
 
 
 - name: Install tgco requirements
@@ -56,8 +56,8 @@
 
 - name: deploy database
   become: true
-  become_user: "tgco"
-  django_manage:  # noqa no-handler
+  become_user: tgco
+  django_manage:  # activating manage.py
     command: "migrate api"
     project_path: "{{ tgco_path }}"
     virtualenv: "{{ tgco_venv }}"
