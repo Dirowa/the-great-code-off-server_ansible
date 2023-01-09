@@ -1,3 +1,8 @@
 tgco:
-        python manage.py migrate api
-		gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
+        
+        ifneq ("$(wildcard $({{ tgco_path }}/db.sqlite3))","")
+		    gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
+        else
+            python manage.py migrate api
+		    gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
+        endif
