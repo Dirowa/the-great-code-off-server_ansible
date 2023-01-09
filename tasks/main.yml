@@ -59,6 +59,7 @@
   become_user: "tgco"
   django_manage:  # noqa no-handler
     command: "migrate api"
+    project_path: "{{ tgco_path }}"
     virtualenv: "{{ tgco_venv }}"
   when: not tgco_database.stat.exists
     
