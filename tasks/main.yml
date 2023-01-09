@@ -46,12 +46,12 @@
     mode: '0644'
     content: |
       tgco:
-      \tif test -f "{{ tgco_path }}/db.sqlite3";then \
-      \t\t{{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
-      \telse \
-      \t\t{{ tgco_path }}/.tgco_env/bin/python manage.py migrate api; \
-      \t\t{{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
-      \tfi
+      "{{ if test -f "{{ tgco_path }}/db.sqlite3";then \ | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
+      "{{ {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
+      "{{ else \ | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
+      "{{ {{ tgco_path }}/.tgco_env/bin/python manage.py migrate api; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
+      "{{ {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \ | map('regex_replace', '(.*)', '\\t\t\\g<1>') }}"
+      "{{ fi | map('regex_replace', '(.*)', '\\t\\g<1>') }}"
 
     
 - name: Install tgco requirements
