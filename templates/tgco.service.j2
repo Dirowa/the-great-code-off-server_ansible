@@ -8,9 +8,9 @@ Description=the-great-code-off_service
 Type=simple
 User=tgco
 WorkingDirectory={{ tgco_path }}
-VIRTUAL_ENV={{ tgco_path }}/.tgco_env
+VIRTUAL_ENV={{ tgco_venv }}
 Environment=PATH=$VIRTUAL_ENV/bin:$PATH
-ExecStart=make tgco
+ExecStart={{ tgco_venv }}/bin/python {{ tgco_venv }}/bin/gunicorn  performance.wsgi --bind 127.0.0.1:{{ tgco_port }}
 Restart=on-abort
 
 [Install]
