@@ -37,13 +37,22 @@
     group: tgco
     mode: '0644'
 
-- name: Setting up TGCO Makefile
-  template:
-    src: Makefile.j2
+- name: Generating TGCO Makefile
+  copy:
     dest: "{{ tgco_path }}/Makefile"
-    owner: tgco
+    force: yes
     group: tgco
+    owner: tgco
     mode: '0644'
+    content: |
+      tgco:
+        if test -f "{{ tgco_path }}/db.sqlite3";then \
+                {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
+        else \
+                {{ tgco_path }}/.tgco_env/bin/python manage.py migrate api; \
+                {{ tgco_path }}/.tgco_env/bin/gunicorn performance.wsgi --bind 127.0.0.1:{{ tgco_port }}; \
+        fi
+
     
 - name: Install tgco requirements
   pip: 
